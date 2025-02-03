@@ -3,7 +3,7 @@ namespace AutoHuoltoSovellus.Models;
 public class Auto
 {
     public int AutoId { get; set; }
-    public string Rekisterinumero { get; set; }
+    public string Rekisterinumero { get; set; } = "";
     public int? SäiliöId { get; set; }
     public DateTime KatsastusPvm { get; set; }
     public DateTime ADR { get; set; }

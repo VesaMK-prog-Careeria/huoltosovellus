@@ -8,9 +8,9 @@ public class SäiliöHuollot
     public int HuollonId { get; set; }
     public int SäiliöId { get; set; }
     public DateTime HuoltoPvm { get; set; }
-    public string HuoltoPaikka { get; set; }
-    public string HuollonKuvaus { get; set; }
-    public byte[] HuollonTyyppi { get; set; }
+    public string HuoltoPaikka { get; set; } = "";
+    public string HuollonKuvaus { get; set; } = "";
+    public byte[] HuollonTyyppi { get; set; } = new byte[0];
 
-    public virtual Säiliö Säiliö { get; set; }
+    public virtual Säiliö Säiliö { get; set; } = null!;
 }
