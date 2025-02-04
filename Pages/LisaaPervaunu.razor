@@ -1,0 +1,57 @@
+@page "/lisaa-peravaunu"
+@using AutoHuoltoSovellus.Models
+@using AutoHuoltoSovellus.Services
+@using AutoHuoltoSovellus.Controllers
+@inject PerävaunuService PerävaunuService
+
+<h3>Lisää uusi perävaunu</h3>
+
+<EditForm Model="UusiPerävaunu" OnValidSubmit="Tallenna">
+    <DataAnnotationsValidator />
+
+    <div>
+        <label>Rekisterinumero:</label>
+        <InputText @bind-Value="UusiPerävaunu.Rekisterinumero" />
+    </div>
+
+    <div>
+        <label>Katsastuspäivämäärä:</label>
+        <InputDate @bind-Value="UusiPerävaunu.KatsastusPvm" />
+    </div>
+    <div>
+        <label>ADR:</label>
+        <InputDate @bind-Value="UusiPerävaunu.ADRPvm" />
+    </div>
+    <div>
+        <label>Välitarkastus:</label>
+        <InputDate @bind-Value="UusiPerävaunu.VälitarkastusPvm" />
+    </div>
+    <div>
+        <label>Määräaikaistarkastus:</label>
+        <InputDate @bind-Value="UusiPerävaunu.MääräaikaistarkastusPvm" />
+    </div>
+
+    <button type="submit">Tallenna</button>
+</EditForm>
+
+@if (Virheilmoitus != null)
+{
+    <p style="color: red">@Virheilmoitus</p>
+}
+
+@code {
+    private Perävaunu UusiPerävaunu = new Perävaunu();
+    private string? Virheilmoitus;
+
+    private async Task Tallenna()
+    {
+        if (await PerävaunuService.Lisaa(UusiPerävaunu))
+        {
+            UusiPerävaunu = new Perävaunu();
+        }
+        else
+        {
+            Virheilmoitus = "Perävaunun lisäys epäonnistui.";
+        }
+    }
+}

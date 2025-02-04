@@ -49,4 +49,43 @@ public class AutoController : ControllerBase
         var autot = await _context.Autot.ToListAsync();
         return Ok(autot);
     }
+
+    [HttpPut("{id}")] // Put pyyntö päivittää auton tiedot
+    public async Task<IActionResult> PaivitaAuto(int id, [FromBody] Auto paivitettyAuto)
+    {
+        if (id != paivitettyAuto.AutoId)
+        {
+            return BadRequest("Auton ID ei täsmää.");
+        }
+
+        var auto = await _context.Autot.FindAsync(id);
+        if (auto == null)
+        {
+            return NotFound();
+        }
+
+        auto.Rekisterinumero = paivitettyAuto.Rekisterinumero;
+        auto.KatsastusPvm = paivitettyAuto.KatsastusPvm;
+        auto.ADRPvm = paivitettyAuto.ADRPvm;
+        auto.PiirturiPvm = paivitettyAuto.PiirturiPvm;
+        auto.AlkolukkoPvm = paivitettyAuto.AlkolukkoPvm;
+        auto.NopeudenrajoitinPvm = paivitettyAuto.NopeudenrajoitinPvm;
+        
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")] // Delete pyyntö poistaa auton
+    public async Task<IActionResult> PoistaAuto(int id)
+    {
+        var auto = await _context.Autot.FindAsync(id);
+        if (auto == null)
+        {
+            return NotFound();
+        }
+
+        _context.Autot.Remove(auto);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 }

@@ -1,0 +1,133 @@
+@page "/peravaunut"
+@using AutoHuoltoSovellus.Models
+@using AutoHuoltoSovellus.Services
+@inject PerävaunuService PerävaunuService
+
+<h3>Perävaunut</h3>
+
+@if (PerävaunutList == null)
+{
+    <p>Ladataan...</p>
+}
+else if (PerävaunutList.Count == 0)
+{
+    <p>Ei perävaunuja tietokannassa.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Rekisterinumero</th>
+                <th>Katsastus</th>
+                <th>ADR</th>
+                <th>Välitarkastus</th>
+                <th>Määräaikaistarkastus</th>
+                <th>Toiminnot</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var perävaunu in PerävaunutList)
+            {
+                <tr>
+                    <td>@perävaunu.Rekisterinumero</td>
+                    <td>@perävaunu.KatsastusPvm.ToShortDateString()</td>
+                    <td>@perävaunu.ADRPvm.ToShortDateString()</td>
+                    <td>@perävaunu.VälitarkastusPvm.ToShortDateString()</td>
+                    <td>@perävaunu.MääräaikaistarkastusPvm.ToShortDateString()</td>
+                    <td>
+                        <button @onclick="() => Muokkaus(perävaunu)">Muokkaa</button>
+                        <button @onclick="() => Poista(perävaunu.PerävaunuId)">Poista</button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (MuokattavaPerävaunu != null)
+{
+    <h4>Muokkaa perävaunua</h4>
+    <EditForm Model="MuokattavaPerävaunu" OnValidSubmit="TallennaPaivitys">
+        <DataAnnotationsValidator />
+
+        <div>
+            <label>Rekisterinumero:</label>
+            <InputText @bind-Value="MuokattavaPerävaunu.Rekisterinumero" />
+        </div>
+
+        <div>
+            <label>Katsastuspäivämäärä:</label>
+            <InputDate @bind-Value="MuokattavaPerävaunu.KatsastusPvm" />
+        </div>
+        <div>
+            <label>ADR:</label>
+            <InputDate @bind-Value="MuokattavaPerävaunu.ADRPvm" />
+        </div>
+        <div>
+            <label>Välitarkastus:</label>
+            <InputDate @bind-Value="MuokattavaPerävaunu.VälitarkastusPvm" />
+        </div>
+        <div>
+            <label>Määräaikaistarkastus:</label>
+            <InputDate @bind-Value="MuokattavaPerävaunu.MääräaikaistarkastusPvm" />
+        </div>
+
+        <button type="submit">Tallenna</button>
+        <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
+    </EditForm>
+}
+
+@code {
+    private List<Perävaunu>? PerävaunutList;
+    private Perävaunu? MuokattavaPerävaunu;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LataaPerävaunut();
+    }
+
+    private async Task LataaPerävaunut()
+    {
+        PerävaunutList = await PerävaunuService.HaeKaikki();
+    }
+
+    private void Muokkaus(Perävaunu perävaunu)
+    {
+        MuokattavaPerävaunu = new Perävaunu
+        {
+            PerävaunuId = perävaunu.PerävaunuId,
+            Rekisterinumero = perävaunu.Rekisterinumero,
+            KatsastusPvm = perävaunu.KatsastusPvm,
+            ADRPvm = perävaunu.ADRPvm,
+            VälitarkastusPvm = perävaunu.VälitarkastusPvm,
+            MääräaikaistarkastusPvm = perävaunu.MääräaikaistarkastusPvm
+        };
+    }
+
+    private async Task TallennaPaivitys()
+    {
+        if (MuokattavaPerävaunu != null)
+        {
+            if (await PerävaunuService.Paivita(MuokattavaPerävaunu))
+            {
+                MuokattavaPerävaunu = null;
+                await LataaPerävaunut();
+            }
+        }
+    }
+
+    private void PeruutaMuokkaus()
+    {
+        MuokattavaPerävaunu = null;
+    }
+
+    private async Task Poista(int id)
+    {
+        if (await PerävaunuService.Poista(id))
+        {
+            await LataaPerävaunut();
+        }
+    }
+}

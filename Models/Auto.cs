@@ -6,10 +6,10 @@ public class Auto
     public string Rekisterinumero { get; set; } = "";
     public int? SäiliöId { get; set; }
     public DateTime KatsastusPvm { get; set; }
-    public DateTime ADR { get; set; }
-    public DateTime Piirturi { get; set; }
-    public DateTime Alkolukko { get; set; }
-    public DateTime Nopeudenrajoitin { get; set; }
+    public DateTime ADRPvm { get; set; }
+    public DateTime PiirturiPvm { get; set; }
+    public DateTime AlkolukkoPvm { get; set; }
+    public DateTime NopeudenrajoitinPvm { get; set; }
     public int AutoInfoId { get; set; }
 
     public virtual Säiliö? Säiliö { get; set; }

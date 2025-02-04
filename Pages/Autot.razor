@@ -19,7 +19,13 @@ else
         <thead>
             <tr>
                 <th>Rekisterinumero</th>
+                <th>Säiliö</th>
                 <th>Katsastus</th>
+                <th>ADR</th>
+                <th>Piirturi</th>
+                <th>Alkolukko</th>
+                <th>Nopeudenrajoitin</th>
+                <th>Toiminnot</th>
             </tr>
         </thead>
         <tbody>
@@ -27,18 +33,109 @@ else
             {
                 <tr>
                     <td>@auto.Rekisterinumero</td>
+                    @* <td>@auto.Sailio</td> *@>
                     <td>@auto.KatsastusPvm.ToShortDateString()</td>
+                    <td>@auto.ADRPvm.ToShortDateString()</td>
+                    <td>@auto.PiirturiPvm.ToShortDateString()</td>
+                    <td>@auto.AlkolukkoPvm.ToShortDateString()</td>
+                    <td>@auto.NopeudenrajoitinPvm.ToShortDateString()</td>
+                    <td>
+                        <button @onclick="() => AvaaMuokkaus(auto)">Muokkaa</button>
+                        <button @onclick="() => PoistaAuto(auto.AutoId)">Poista</button>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 }
 
+@if (MuokattavaAuto != null)
+{
+    <h4>Muokkaa autoa</h4>
+    <EditForm Model="MuokattavaAuto" OnValidSubmit="TallennaPaivitys">
+        <DataAnnotationsValidator />
+
+        <div>
+            <label>Rekisterinumero:</label>
+            <InputText @bind-Value="MuokattavaAuto.Rekisterinumero" />
+        </div>
+
+        <div>
+            <label>Katsastuspäivämäärä:</label>
+            <InputDate @bind-Value="MuokattavaAuto.KatsastusPvm" />
+        </div>
+        <div>
+            <label>ADR:</label>
+            <InputDate @bind-Value="MuokattavaAuto.ADRPvm" />
+        </div>
+        <div>
+            <label>Piirturi:</label>
+            <InputDate @bind-Value="MuokattavaAuto.PiirturiPvm" />
+        </div>
+        <div>
+            <label>Alkolukko:</label>
+            <InputDate @bind-Value="MuokattavaAuto.AlkolukkoPvm" />
+        </div>
+        <div>
+            <label>Nopeudenrajoitin:</label>
+            <InputDate @bind-Value="MuokattavaAuto.NopeudenrajoitinPvm" />
+        </div>
+
+        <button type="submit">Tallenna</button>
+        <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
+    </EditForm>
+}
+
 @code {
     private List<Auto>? AutotList;
+    private Auto? MuokattavaAuto;
 
     protected override async Task OnInitializedAsync()
     {
+        await LataaAutot();
+    }
+
+    private async Task LataaAutot()
+    {
         AutotList = await AutoService.HaeKaikkiAutot();
+    }
+
+    private void AvaaMuokkaus(Auto auto)
+    {
+        MuokattavaAuto = new Auto
+        {
+            AutoId = auto.AutoId,
+            Rekisterinumero = auto.Rekisterinumero,
+            KatsastusPvm = auto.KatsastusPvm,
+            ADRPvm = auto.ADRPvm,
+            PiirturiPvm = auto.PiirturiPvm,
+            AlkolukkoPvm = auto.AlkolukkoPvm,
+            NopeudenrajoitinPvm = auto.NopeudenrajoitinPvm
+        };
+    }
+
+    private async Task TallennaPaivitys()
+    {
+        if (MuokattavaAuto != null)
+        {
+            if (await AutoService.PaivitaAuto(MuokattavaAuto))
+            {
+                MuokattavaAuto = null;
+                await LataaAutot();
+            }
+        }
+    }
+
+    private void PeruutaMuokkaus()
+    {
+        MuokattavaAuto = null;
+    }
+
+    private async Task PoistaAuto(int id)
+    {
+        if (await AutoService.PoistaAuto(id))
+        {
+            await LataaAutot();
+        }
     }
 }

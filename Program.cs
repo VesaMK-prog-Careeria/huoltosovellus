@@ -29,6 +29,7 @@ builder.Services.AddHttpClient<AutoService>(client => // Lisätään http client
 // });
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5037/") }); // *! Käytetään HTTP clienttiä
 builder.Services.AddScoped<AutoService>(); // Lisätään AutoService
+builder.Services.AddScoped<PerävaunuService>(); // Lisätään PerävaunuService
 
 
 

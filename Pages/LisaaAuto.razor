@@ -5,15 +5,30 @@
 @inject AutoService AutoService
 
 <h3>Lisää uusi auto</h3>
-//*TODO Lisää muut labelit ja inputit
+
 <EditForm Model="UusiAuto" OnValidSubmit="TallennaAuto">
     <DataAnnotationsValidator />
     
     <label>Rekisterinumero:</label>
     <InputText @bind-Value="UusiAuto.Rekisterinumero" />
+//*TODO Lisää säiliö pudotusvalikko*//
+    @* <label>Säiliö:</label>
+    <InputDate @bind-Value="UusiAuto.Säiliö" /> *@
     
-    <label>Katsastuspäivämäärä:</label>
+    <label>Katsastus:</label>
     <InputDate @bind-Value="UusiAuto.KatsastusPvm" />
+
+    <label>ADR:</label>
+    <InputDate @bind-Value="UusiAuto.ADRPvm" />
+
+    <label>Piirturi:</label>
+    <InputDate @bind-Value="UusiAuto.PiirturiPvm" />
+
+    <label>Alkolukko:</label>
+    <InputDate @bind-Value="UusiAuto.AlkolukkoPvm" />
+
+    <label>Nopeudenrajoitin:</label>
+    <InputDate @bind-Value="UusiAuto.NopeudenrajoitinPvm" />
     
     <button type="submit">Tallenna</button>
 </EditForm>

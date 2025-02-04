@@ -22,4 +22,16 @@ public class AutoService
         var response = await _httpClient.PostAsJsonAsync("api/auto", auto);
         return response.IsSuccessStatusCode;
     }
+
+    public async Task<bool> PaivitaAuto(Auto auto)
+    {
+        var response = await _httpClient.PutAsJsonAsync($"api/auto/{auto.AutoId}", auto);
+        return response.IsSuccessStatusCode;
+    }
+
+    public async Task<bool> PoistaAuto(int id)
+    {
+        var response = await _httpClient.DeleteAsync($"api/auto/{id}");
+        return response.IsSuccessStatusCode;
+    }
 }
