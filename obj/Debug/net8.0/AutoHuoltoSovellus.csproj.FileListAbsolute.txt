@@ -151,6 +151,7 @@ C:\AutoHuoltoSovellus\obj\Debug\net8.0\AutoHuoltoSovellus.csproj.CoreCompileInpu
 C:\AutoHuoltoSovellus\obj\Debug\net8.0\AutoHuoltoSovellus.MvcApplicationPartsAssemblyInfo.cache
 C:\AutoHuoltoSovellus\obj\Debug\net8.0\AutoHuoltoSovellus.RazorAssemblyInfo.cache
 C:\AutoHuoltoSovellus\obj\Debug\net8.0\AutoHuoltoSovellus.RazorAssemblyInfo.cs
+C:\AutoHuoltoSovellus\obj\Debug\net8.0\AutoHuoltoSovellus.sourcelink.json
 C:\AutoHuoltoSovellus\obj\Debug\net8.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
 C:\AutoHuoltoSovellus\obj\Debug\net8.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\AutoHuoltoSovellus\obj\Debug\net8.0\scopedcss\bundle\AutoHuoltoSovellus.styles.css

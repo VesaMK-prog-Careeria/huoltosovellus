@@ -1,0 +1,49 @@
+@page "/lisaa-auto"
+@using AutoHuoltoSovellus.Models
+@using AutoHuoltoSovellus.Controllers
+@using AutoHuoltoSovellus.Services
+@inject AutoService AutoService
+
+<h3>Lisää uusi auto</h3>
+//*TODO Lisää muut labelit ja inputit
+<EditForm Model="UusiAuto" OnValidSubmit="TallennaAuto">
+    <DataAnnotationsValidator />
+    
+    <label>Rekisterinumero:</label>
+    <InputText @bind-Value="UusiAuto.Rekisterinumero" />
+    
+    <label>Katsastuspäivämäärä:</label>
+    <InputDate @bind-Value="UusiAuto.KatsastusPvm" />
+    
+    <button type="submit">Tallenna</button>
+</EditForm>
+
+@if (Virheilmoitus != null)
+{
+    <p style="color: red">@Virheilmoitus</p>
+}
+
+@code {
+    private Auto UusiAuto = new Auto();
+    private string? Virheilmoitus;
+
+    private async Task TallennaAuto()
+{
+    if (AutoService != null) // Varmistetaan, että palvelu on injektoitu
+    {
+        bool onnistui = await AutoService.LisaaAuto(UusiAuto);
+        if (onnistui)
+        {
+            UusiAuto = new Auto(); // Tyhjennetään lomake onnistuneen lisäyksen jälkeen
+        }
+        else
+        {
+            Virheilmoitus = "Auton lisäys epäonnistui.";
+        }
+    }
+    else
+    {
+        Virheilmoitus = "AutoService ei ole käytettävissä!";
+    }
+}
+}

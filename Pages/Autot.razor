@@ -1,0 +1,44 @@
+@page "/autot"
+@using AutoHuoltoSovellus.Models
+@using AutoHuoltoSovellus.Services
+@inject AutoService AutoService
+
+<h3>Autot</h3>
+
+@if (AutotList == null)
+{
+    <p>Ladataan...</p>
+}
+else if (AutotList.Count == 0)
+{
+    <p>Ei autoja tietokannassa.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Rekisterinumero</th>
+                <th>Katsastus</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var auto in AutotList)
+            {
+                <tr>
+                    <td>@auto.Rekisterinumero</td>
+                    <td>@auto.KatsastusPvm.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Auto>? AutotList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AutotList = await AutoService.HaeKaikkiAutot();
+    }
+}
