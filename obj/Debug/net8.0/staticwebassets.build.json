@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0jfoRsgLPxkfjsBj/n8nXgpsKsbY2FDpdmviQKfyn4M=",
+  "Hash": "+Cy2uhKJuc4dqj8H/SbSuadNHfUZoBZW0cMF/tmcySk=",
   "Source": "AutoHuoltoSovellus",
   "BasePath": "_content/AutoHuoltoSovellus",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "czh02sc8it",
-      "Integrity": "+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44=",
+      "Fingerprint": "mo09omngu2",
+      "Integrity": "tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\AutoHuoltoSovellus\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AutoHuoltoSovellus.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "czh02sc8it",
-      "Integrity": "+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44=",
+      "Fingerprint": "mo09omngu2",
+      "Integrity": "tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\AutoHuoltoSovellus\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AutoHuoltoSovellus.bundle.scp.css"
@@ -304,8 +304,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zh9s866nx2",
-      "Integrity": "Fx+c1youNLgejKLBM3S2fD6fcDOSv/D7tNQKm5gws6U=",
+      "Fingerprint": "8ibtytlnre",
+      "Integrity": "gOVnVDOHZOgLvDwAGivPMa0uNYzgTqr75iYDtiHY/G4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -344,7 +344,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3027"
+          "Value": "3029"
         },
         {
           "Name": "Content-Type",
@@ -352,11 +352,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44=\""
+          "Value": "\"tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Feb 2025 12:32:52 GMT"
+          "Value": "Sat, 08 Feb 2025 12:26:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -366,12 +366,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44="
+          "Value": "sha256-tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg="
         }
       ]
     },
     {
-      "Route": "AutoHuoltoSovellus.czh02sc8it.bundle.scp.css",
+      "Route": "AutoHuoltoSovellus.mo09omngu2.bundle.scp.css",
       "AssetFile": "C:\\AutoHuoltoSovellus\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AutoHuoltoSovellus.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -381,7 +381,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3027"
+          "Value": "3029"
         },
         {
           "Name": "Content-Type",
@@ -389,11 +389,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44=\""
+          "Value": "\"tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Feb 2025 12:32:52 GMT"
+          "Value": "Sat, 08 Feb 2025 12:26:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -403,7 +403,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "czh02sc8it"
+          "Value": "mo09omngu2"
         },
         {
           "Name": "label",
@@ -411,12 +411,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44="
+          "Value": "sha256-tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg="
         }
       ]
     },
     {
-      "Route": "AutoHuoltoSovellus.czh02sc8it.styles.css",
+      "Route": "AutoHuoltoSovellus.mo09omngu2.styles.css",
       "AssetFile": "C:\\AutoHuoltoSovellus\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AutoHuoltoSovellus.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -426,7 +426,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3027"
+          "Value": "3029"
         },
         {
           "Name": "Content-Type",
@@ -434,11 +434,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44=\""
+          "Value": "\"tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Feb 2025 12:32:52 GMT"
+          "Value": "Sat, 08 Feb 2025 12:26:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -448,7 +448,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "czh02sc8it"
+          "Value": "mo09omngu2"
         },
         {
           "Name": "label",
@@ -456,7 +456,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44="
+          "Value": "sha256-tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg="
         }
       ]
     },
@@ -471,7 +471,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3027"
+          "Value": "3029"
         },
         {
           "Name": "Content-Type",
@@ -479,11 +479,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44=\""
+          "Value": "\"tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Feb 2025 12:32:52 GMT"
+          "Value": "Sat, 08 Feb 2025 12:26:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -493,7 +493,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+LLFCuPz9+DvMbjZYkwFBapaaC8qmmToH4gTWwNeA44="
+          "Value": "sha256-tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg="
         }
       ]
     },
@@ -1400,6 +1400,51 @@
       ]
     },
     {
+      "Route": "css/site.8ibtytlnre.css",
+      "AssetFile": "C:\\AutoHuoltoSovellus\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3736"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gOVnVDOHZOgLvDwAGivPMa0uNYzgTqr75iYDtiHY/G4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 09 Feb 2025 09:53:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8ibtytlnre"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gOVnVDOHZOgLvDwAGivPMa0uNYzgTqr75iYDtiHY/G4="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\AutoHuoltoSovellus\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1410,7 +1455,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2978"
+          "Value": "3736"
         },
         {
           "Name": "Content-Type",
@@ -1418,11 +1463,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Fx+c1youNLgejKLBM3S2fD6fcDOSv/D7tNQKm5gws6U=\""
+          "Value": "\"gOVnVDOHZOgLvDwAGivPMa0uNYzgTqr75iYDtiHY/G4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 03 Feb 2025 18:55:39 GMT"
+          "Value": "Sun, 09 Feb 2025 09:53:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1432,52 +1477,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Fx+c1youNLgejKLBM3S2fD6fcDOSv/D7tNQKm5gws6U="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.zh9s866nx2.css",
-      "AssetFile": "C:\\AutoHuoltoSovellus\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2978"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Fx+c1youNLgejKLBM3S2fD6fcDOSv/D7tNQKm5gws6U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 03 Feb 2025 18:55:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "zh9s866nx2"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Fx+c1youNLgejKLBM3S2fD6fcDOSv/D7tNQKm5gws6U="
+          "Value": "sha256-gOVnVDOHZOgLvDwAGivPMa0uNYzgTqr75iYDtiHY/G4="
         }
       ]
     },

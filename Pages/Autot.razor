@@ -1,7 +1,10 @@
 @page "/autot"
 @using AutoHuoltoSovellus.Models
 @using AutoHuoltoSovellus.Services
+
 @inject AutoService AutoService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
 
 <h3>Autot</h3>
 
@@ -51,39 +54,43 @@ else
 
 @if (MuokattavaAuto != null)
 {
-    <h4>Muokkaa autoa</h4>
-    <EditForm Model="MuokattavaAuto" OnValidSubmit="TallennaPaivitys">
-        <DataAnnotationsValidator />
+    <div class="modal_overlay" style="display: flex !important;">
+        <div class="modal" style="display: block !important;">
+        <h4>Muokkaa autoa</h4>
+        <EditForm Model="MuokattavaAuto" OnValidSubmit="TallennaPaivitys">
+            <DataAnnotationsValidator />
 
-        <div>
-            <label>Rekisterinumero:</label>
-            <InputText @bind-Value="MuokattavaAuto.Rekisterinumero" />
-        </div>
+            <div>
+                <label>Rekisterinumero:</label>
+                <InputText @bind-Value="MuokattavaAuto.Rekisterinumero" />
+            </div>
 
-        <div>
-            <label>Katsastuspäivämäärä:</label>
-            <InputDate @bind-Value="MuokattavaAuto.KatsastusPvm" />
-        </div>
-        <div>
-            <label>ADR:</label>
-            <InputDate @bind-Value="MuokattavaAuto.ADRPvm" />
-        </div>
-        <div>
-            <label>Piirturi:</label>
-            <InputDate @bind-Value="MuokattavaAuto.PiirturiPvm" />
-        </div>
-        <div>
-            <label>Alkolukko:</label>
-            <InputDate @bind-Value="MuokattavaAuto.AlkolukkoPvm" />
-        </div>
-        <div>
-            <label>Nopeudenrajoitin:</label>
-            <InputDate @bind-Value="MuokattavaAuto.NopeudenrajoitinPvm" />
-        </div>
+            <div>
+                <label>Katsastuspäivämäärä:</label>
+                <InputDate @bind-Value="MuokattavaAuto.KatsastusPvm" />
+            </div>
+            <div>
+                <label>ADR:</label>
+                <InputDate @bind-Value="MuokattavaAuto.ADRPvm" />
+            </div>
+            <div>
+                <label>Piirturi:</label>
+                <InputDate @bind-Value="MuokattavaAuto.PiirturiPvm" />
+            </div>
+            <div>
+                <label>Alkolukko:</label>
+                <InputDate @bind-Value="MuokattavaAuto.AlkolukkoPvm" />
+            </div>
+            <div>
+                <label>Nopeudenrajoitin:</label>
+                <InputDate @bind-Value="MuokattavaAuto.NopeudenrajoitinPvm" />
+            </div>
 
-        <button type="submit">Tallenna</button>
-        <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
-    </EditForm>
+            <button type="submit">Tallenna</button>
+            <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
+        </EditForm>
+        </div>
+    </div>
 }
 
 @code {
@@ -100,7 +107,7 @@ else
         AutotList = await AutoService.HaeKaikkiAutot();
     }
 
-    private void AvaaMuokkaus(Auto auto)
+    private async Task AvaaMuokkaus(Auto auto)
     {
         MuokattavaAuto = new Auto
         {
@@ -112,6 +119,10 @@ else
             AlkolukkoPvm = auto.AlkolukkoPvm,
             NopeudenrajoitinPvm = auto.NopeudenrajoitinPvm
         };
+
+        // Pieni viive UI:n päivittämiseksi
+        await Task.Delay(50);
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task TallennaPaivitys()
@@ -133,7 +144,8 @@ else
 
     private async Task PoistaAuto(int id)
     {
-        if (await AutoService.PoistaAuto(id))
+        bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", "Haluatko varmasti poistaa tämän auton?");
+        if (confirm && await AutoService.PoistaAuto(id))
         {
             await LataaAutot();
         }

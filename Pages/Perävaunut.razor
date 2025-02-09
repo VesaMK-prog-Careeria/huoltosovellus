@@ -1,9 +1,15 @@
 @page "/peravaunut"
 @using AutoHuoltoSovellus.Models
 @using AutoHuoltoSovellus.Services
+
 @inject PerävaunuService PerävaunuService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+
 
 <h3>Perävaunut</h3>
+
+
 
 @if (PerävaunutList == null)
 {
@@ -36,7 +42,8 @@ else
                     <td>@perävaunu.VälitarkastusPvm.ToShortDateString()</td>
                     <td>@perävaunu.MääräaikaistarkastusPvm.ToShortDateString()</td>
                     <td>
-                        <button @onclick="() => Muokkaus(perävaunu)">Muokkaa</button>
+                        <button @onclick="@(async () => await Muokkaus(perävaunu))">Muokkaa</button>
+                        @* <button @onclick="() => Muokkaus(perävaunu)">Muokkaa</button> *@
                         <button @onclick="() => Poista(perävaunu.PerävaunuId)">Poista</button>
 
                     </td>
@@ -48,35 +55,39 @@ else
 
 @if (MuokattavaPerävaunu != null)
 {
-    <h4>Muokkaa perävaunua</h4>
-    <EditForm Model="MuokattavaPerävaunu" OnValidSubmit="TallennaPaivitys">
-        <DataAnnotationsValidator />
+    <div class="modal-overlay" style="display: flex !important;">
+        <div class="modal" style="display: block !important;">
+            <h4>Muokkaa perävaunua</h4>
+            <EditForm Model="MuokattavaPerävaunu" OnValidSubmit="TallennaPaivitys">
+                <DataAnnotationsValidator />
 
-        <div>
-            <label>Rekisterinumero:</label>
-            <InputText @bind-Value="MuokattavaPerävaunu.Rekisterinumero" />
-        </div>
+                <div>
+                    <label>Rekisterinumero:</label>
+                    <InputText @bind-Value="MuokattavaPerävaunu.Rekisterinumero" />
+                </div>
 
-        <div>
-            <label>Katsastuspäivämäärä:</label>
-            <InputDate @bind-Value="MuokattavaPerävaunu.KatsastusPvm" />
-        </div>
-        <div>
-            <label>ADR:</label>
-            <InputDate @bind-Value="MuokattavaPerävaunu.ADRPvm" />
-        </div>
-        <div>
-            <label>Välitarkastus:</label>
-            <InputDate @bind-Value="MuokattavaPerävaunu.VälitarkastusPvm" />
-        </div>
-        <div>
-            <label>Määräaikaistarkastus:</label>
-            <InputDate @bind-Value="MuokattavaPerävaunu.MääräaikaistarkastusPvm" />
-        </div>
+                <div>
+                    <label>Katsastuspäivämäärä:</label>
+                    <InputDate @bind-Value="MuokattavaPerävaunu.KatsastusPvm" />
+                </div>
+                <div>
+                    <label>ADR:</label>
+                    <InputDate @bind-Value="MuokattavaPerävaunu.ADRPvm" />
+                </div>
+                <div>
+                    <label>Välitarkastus:</label>
+                    <InputDate @bind-Value="MuokattavaPerävaunu.VälitarkastusPvm" />
+                </div>
+                <div>
+                    <label>Määräaikaistarkastus:</label>
+                    <InputDate @bind-Value="MuokattavaPerävaunu.MääräaikaistarkastusPvm" />
+                </div>
 
-        <button type="submit">Tallenna</button>
-        <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
-    </EditForm>
+                <button type="submit">Tallenna</button>
+                <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
+            </EditForm>
+        </div>
+    </div>
 }
 
 @code {
@@ -93,7 +104,7 @@ else
         PerävaunutList = await PerävaunuService.HaeKaikki();
     }
 
-    private void Muokkaus(Perävaunu perävaunu)
+    private async Task Muokkaus(Perävaunu perävaunu)
     {
         MuokattavaPerävaunu = new Perävaunu
         {
@@ -104,6 +115,10 @@ else
             VälitarkastusPvm = perävaunu.VälitarkastusPvm,
             MääräaikaistarkastusPvm = perävaunu.MääräaikaistarkastusPvm
         };
+
+        await Task.Delay(50); // Pieni viive UI:n päivittämiseksi
+        await InvokeAsync(StateHasChanged);
+
     }
 
     private async Task TallennaPaivitys()
@@ -121,11 +136,14 @@ else
     private void PeruutaMuokkaus()
     {
         MuokattavaPerävaunu = null;
+        InvokeAsync(StateHasChanged); // Päivitetään komponentti, jotta modaalinen ikkuna sulkeutuu
     }
 
     private async Task Poista(int id)
     {
-        if (await PerävaunuService.Poista(id))
+        // Kysytään käyttäjältä varmistus ennen poistamista
+        bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", "Haluatko varmasti poistaa tämän perävaunun?");
+        if (confirm && await PerävaunuService.Poista(id))
         {
             await LataaPerävaunut();
         }

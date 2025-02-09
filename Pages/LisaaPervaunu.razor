@@ -3,6 +3,7 @@
 @using AutoHuoltoSovellus.Services
 @using AutoHuoltoSovellus.Controllers
 @inject PerävaunuService PerävaunuService
+@inject NavigationManager Navigation
 
 <h3>Lisää uusi perävaunu</h3>
 
@@ -47,7 +48,7 @@
     {
         if (await PerävaunuService.Lisaa(UusiPerävaunu))
         {
-            UusiPerävaunu = new Perävaunu();
+            Navigation.NavigateTo("/peravaunut", forceLoad: true);
         }
         else
         {

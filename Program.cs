@@ -18,19 +18,22 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddControllers(); // Lisätään kontrollerit
-builder.Services.AddHttpClient<AutoService>(client => // Lisätään http client
+
+//Määritetään yhteinen BASE URL
+builder.Services.AddHttpClient("ApiClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:5037"); // Lisätään base url
+    client.BaseAddress = new Uri("http://localhost:5037/");
 });
 // Jos siirrytään WebAssemblyyn niin yllä oleva vaihdetaan seuraavaan:
 // builder.Services.AddHttpClient<AutoService>(client =>
 // {
 //     client.BaseAddress = new Uri("https://localhost:5037/");
 // });
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5037/") }); // *! Käytetään HTTP clienttiä
-builder.Services.AddScoped<AutoService>(); // Lisätään AutoService
-builder.Services.AddScoped<PerävaunuService>(); // Lisätään PerävaunuService
 
+// Käytetään yleistä HTTP clienttiä eri serviceiden välillä
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ApiClient"));
+builder.Services.AddScoped<AutoService>();
+builder.Services.AddScoped<PerävaunuService>();
 
 
 var app = builder.Build();
@@ -43,7 +46,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.MapGet("/", () => "Hello World!");
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();

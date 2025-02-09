@@ -3,6 +3,7 @@
 @using AutoHuoltoSovellus.Controllers
 @using AutoHuoltoSovellus.Services
 @inject AutoService AutoService
+@inject NavigationManager Navigation
 
 <h3>Lisää uusi auto</h3>
 
@@ -49,7 +50,7 @@
         bool onnistui = await AutoService.LisaaAuto(UusiAuto);
         if (onnistui)
         {
-            UusiAuto = new Auto(); // Tyhjennetään lomake onnistuneen lisäyksen jälkeen
+            Navigation.NavigateTo("/autot", forceLoad: true);
         }
         else
         {
