@@ -4,13 +4,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\AutoHuoltoSovellus.mo09omngu2.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3029"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\u0022"},{"Name":"Last-Modified","Value":"Sat, 08 Feb 2025 12:26:47 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3029"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\u0022"},{"Name":"Last-Modified","Value":"Sun, 09 Feb 2025 11:10:39 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/AutoHuoltoSovellus/AutoHuoltoSovellus.mo09omngu2.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\AutoHuoltoSovellus.mo09omngu2.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"mo09omngu2"},{"Name":"integrity","Value":"sha256-tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg="},{"Name":"label","Value":"_content/AutoHuoltoSovellus/AutoHuoltoSovellus.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3029"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\u0022"},{"Name":"Last-Modified","Value":"Sat, 08 Feb 2025 12:26:47 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3029"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022tgs8J0PmS9cKo5z1nA4Wh6d8iuxOHUL1Rt0xwqB1Qpg=\u0022"},{"Name":"Last-Modified","Value":"Sun, 09 Feb 2025 11:10:39 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/AutoHuoltoSovellus/css/bootstrap/bootstrap.min.bpk8xqwxhs.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\bootstrap\bootstrap.min.css'))</AssetFile>

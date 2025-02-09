@@ -1,0 +1,141 @@
+@page "/sailiot"
+@using AutoHuoltoSovellus.Models
+@using AutoHuoltoSovellus.Services
+
+@inject SäiliöService SäiliöService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+
+
+<h3>Säiliöt</h3>
+
+
+
+@if (SäiliötList == null)
+{
+    <p>Ladataan...</p>
+}
+else if (SäiliötList.Count == 0)
+{
+    <p>Ei säiliöitä tietokannassa.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>SäiliöNro</th>
+                <th>Vakaus</th>
+                <th>Välitarkastus</th>
+                <th>Määräaikaistarkastus</th>
+                <th>Toiminnot</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var säiliö in SäiliötList)
+            {
+                <tr>
+                    <td>@säiliö.SäiliöNro</td>
+                    <td>@säiliö.VakausPvm.ToShortDateString()</td>
+                    <td>@säiliö.VälitarkastusPvm.ToShortDateString()</td>
+                    <td>@säiliö.MääräaikaistarkastusPvm.ToShortDateString()</td>
+                    <td>
+                        <button @onclick="async () => await Muokkaus(säiliö)">Muokkaa</button>
+                        <button @onclick="() => Poista(säiliö.SäiliöId)">Poista</button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (MuokattavaSäiliö != null)
+{
+    <div class="modal-overlay" style="display: flex !important;">
+        <div class="modal" style="display: block !important;">
+            <h4>Muokkaa säiliötä</h4>
+            <EditForm Model="MuokattavaSäiliö" OnValidSubmit="TallennaPaivitys">
+                <DataAnnotationsValidator />
+                <div>
+                    <label>SäiliöNro:</label>
+                    <InputNumber @bind-Value="MuokattavaSäiliö.SäiliöNro" />
+                </div>
+
+                <div>
+                    <label>VakausPvm:</label>
+                    <InputDate @bind-Value="MuokattavaSäiliö.VakausPvm" />
+                </div>
+                <div>
+                    <label>Välitarkastus:</label>
+                    <InputDate @bind-Value="MuokattavaSäiliö.VälitarkastusPvm" />
+                </div>
+                <div>
+                    <label>Määräaikaistarkastus:</label>
+                    <InputDate @bind-Value="MuokattavaSäiliö.MääräaikaistarkastusPvm" />
+                </div>
+
+                <button type="submit">Tallenna</button>
+                <button type="button" @onclick="PeruutaMuokkaus">Peruuta</button>
+            </EditForm>
+        </div>
+    </div>
+}
+
+@code {
+    private List<Säiliö>? SäiliötList;
+    private Säiliö? MuokattavaSäiliö;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LataaSäiliöt();
+    }
+
+    private async Task LataaSäiliöt()
+    {
+        SäiliötList = await SäiliöService.HaeKaikki();
+    }
+
+    private async Task Muokkaus(Säiliö säiliö)
+    {
+        MuokattavaSäiliö = new Säiliö
+        {
+            SäiliöId = säiliö.SäiliöId,
+            VakausPvm = säiliö.VakausPvm,
+            VälitarkastusPvm = säiliö.VälitarkastusPvm,
+            MääräaikaistarkastusPvm = säiliö.MääräaikaistarkastusPvm
+        };
+
+        await Task.Delay(50); // Pieni viive UI:n päivittämiseksi
+        await InvokeAsync(StateHasChanged);
+
+    }
+
+    private async Task TallennaPaivitys()
+    {
+        if (MuokattavaSäiliö != null)
+        {
+            if (await SäiliöService.Paivita(MuokattavaSäiliö))
+            {
+                MuokattavaSäiliö = null;
+                await LataaSäiliöt();
+            }
+        }
+    }
+
+    private void PeruutaMuokkaus()
+    {
+        MuokattavaSäiliö = null;
+        InvokeAsync(StateHasChanged); // Päivitetään komponentti, jotta modaalinen ikkuna sulkeutuu
+    }
+
+    private async Task Poista(int id)
+    {
+        // Kysytään käyttäjältä varmistus ennen poistamista
+        bool confirm = await JSRuntime.InvokeAsync<bool>("confirm", "Haluatko varmasti poistaa tämän säiliön?");
+        if (confirm && await SäiliöService.Poista(id))
+        {
+            await LataaSäiliöt();
+        }
+    }
+}

@@ -36,28 +36,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0b3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/AutoHuoltoSovellus/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/AutoHuoltoSovellus/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/AutoHuoltoSovellus/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/AutoHuoltoSovellus/Pages/LisaaAuto.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzYWFBdXRvLnJhem9y
+[C:/AutoHuoltoSovellus/Pages/LisääAuto.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzw6TDpEF1dG8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/AutoHuoltoSovellus/Pages/LisaaPervaunu.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzYWFQZXJ2YXVudS5yYXpvcg==
+[C:/AutoHuoltoSovellus/Pages/LisääPerävaunu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzw6TDpFBlcsOkdmF1bnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AutoHuoltoSovellus/Pages/LisääSäiliö.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzw6TDpFPDpGlsacO2LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/AutoHuoltoSovellus/Pages/Perävaunut.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyw6R2YXVudXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AutoHuoltoSovellus/Pages/Säiliöt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU8OkaWxpw7Z0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/AutoHuoltoSovellus/Shared/SurveyPrompt.razor]

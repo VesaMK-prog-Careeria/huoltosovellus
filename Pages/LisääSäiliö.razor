@@ -1,0 +1,54 @@
+@page "/lisaa-sailio"
+@using AutoHuoltoSovellus.Models
+@using AutoHuoltoSovellus.Services
+@using AutoHuoltoSovellus.Controllers
+@inject SäiliöService SäiliöService
+@inject NavigationManager Navigation
+
+<h3>Lisää uusi säiliö</h3>
+
+<EditForm Model="UusiSäiliö" OnValidSubmit="Tallenna">
+    <DataAnnotationsValidator />
+
+    <div>
+        <label>SäiliöNro:</label>
+        <InputNumber @bind-Value="UusiSäiliö.SäiliöNro" />
+    </div>
+
+    <div>
+        <label>Vakaus:</label>
+        <InputDate @bind-Value="UusiSäiliö.VakausPvm" />
+    </div>
+    <div>
+        <label>Välitarkastus:</label>
+        <InputDate @bind-Value="UusiSäiliö.VälitarkastusPvm" />
+    </div>
+    <div>
+        <label>Määräaikaistarkastus:</label>
+        <InputDate @bind-Value="UusiSäiliö.MääräaikaistarkastusPvm" />
+    </div>
+
+    <button type="submit">Tallenna</button>
+</EditForm>
+
+@if (Virheilmoitus != null)
+{
+    <p style="color: red">@Virheilmoitus</p>
+}
+
+@code {
+    private Säiliö UusiSäiliö = new Säiliö();
+    private string? Virheilmoitus;
+
+    private async Task Tallenna()
+    {
+        if (await SäiliöService.Lisaa(UusiSäiliö))
+        {
+            Navigation.NavigateTo("/sailiot", forceLoad: true);
+        }
+        else
+        {
+            Virheilmoitus = "Säiliön lisäys epäonnistui.";
+        }
+    }
+}

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoHuoltoSovellus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e247987ee294f49e4995e5f72380823d68018eb9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54c1458503e5de8ea79955fc8ef646c3a2693972")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoHuoltoSovellus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoHuoltoSovellus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

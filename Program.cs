@@ -16,7 +16,6 @@ builder.Services.AddDbContext<HuoltoDbContext>(options =>
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddControllers(); // Lisätään kontrollerit
 
 //Määritetään yhteinen BASE URL
@@ -34,6 +33,7 @@ builder.Services.AddHttpClient("ApiClient", client =>
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("ApiClient"));
 builder.Services.AddScoped<AutoService>();
 builder.Services.AddScoped<PerävaunuService>();
+builder.Services.AddScoped<SäiliöService>();
 
 
 var app = builder.Build();
