@@ -1,0 +1,46 @@
+# Build-kansiot
+bin/
+obj/
+out/
+
+# Riippuvuudet ja paketit
+node_modules/
+wwwroot/lib/
+wwwroot/dist/
+wwwroot/node_modules/
+
+# IDE- ja editoriasetukset
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Käyttöjärjestelmäkohtaiset tiedostot
+.DS_Store
+Thumbs.db
+*.swp
+
+# ASP.NET Core ympäristökohtaiset asetukset
+appsettings.Development.json
+appsettings.Local.json
+
+# Logit ja muut väliaikaistiedostot
+logs/
+*.log
+*.tlog
+*.tmp
+temp/
+
+# Azure- ja julkaisukohtaiset tiedostot
+.publish/
+Azure/
+
+# SQL Server -tietokannat (varmuuskopiointi)
+*.mdf
+*.ldf
+*.bak
+
+# User secrets (jos käytössä)
+secrets.json
